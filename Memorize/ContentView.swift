@@ -8,55 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    let viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-            ScrollView{
-                LazyVGrid (columns: [GridItem(.adaptive(minimum: 90))]){
-                    ForEach(viewModel.cards) {card in
-                        CardView(card: card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                viewModel.choose(card)
-                            }
-                    }
+        ScrollView{
+            LazyVGrid (columns: [GridItem(.adaptive(minimum: 90))]){
+                ForEach(viewModel.cards) {card in
+                    CardView(card: card)
+                        .aspectRatio(2/3, contentMode: .fit)
+                        .onTapGesture {
+                            viewModel.choose(card)
+                        }
                 }
             }
-            .padding(.horizontal)
-            .foregroundColor(.red)
-            
-            
-//            Spacer(minLength: 20)
-//            HStack{
-//                remove
-//                Spacer()
-//                add
-//            }
-//            .font(.largeTitle)
-//            .padding(.horizontal)
         }
+        .padding(.horizontal)
+        .foregroundColor(.red)
     }
-//
-//    var remove: some View{
-//        Button{
-//            if emojiCount > 1 {
-//                emojiCount -= 1
-//            }
-//        } label: {
-//            Image(systemName: "minus.circle")
-//        }
-//    }
-//    var add: some View{
-//        Button{
-//            if emojiCount < emojis.count {
-//                emojiCount += 1
-//
-//            }
-//        } label: {
-//            Image(systemName: "plus.circle")
-//        }
-//    }
-//}
+}
 
 struct CardView: View{
     let card: MemoryGame<String>.Card
