@@ -11,17 +11,21 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
-        ScrollView{
-            LazyVGrid (columns: [GridItem(.adaptive(minimum: 90))]){
-                ForEach(game.cards) {card in
-                    CardView(card: card)
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .onTapGesture {
-                            game.choose(card)
-                        }
+        //        ScrollView{
+        //            LazyVGrid (columns: [GridItem(.adaptive(minimum: 90))]){
+        //                ForEach(game.cards) {card in
+        AspectVGrid(items: game.cards,
+                    aspectRatio: 2/3,
+                    content: {card in
+            CardView(card: card)
+                .padding(4)
+                .onTapGesture {
+                    game.choose(card)
                 }
-            }
-        }
+        })
+        //                }
+        //            }
+        //        }
         .padding(.horizontal)
         .foregroundColor(.red)
     }
@@ -51,9 +55,9 @@ struct CardView: View{
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 20
+        static let cornerRadius: CGFloat = 15
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.7
+        static let fontScale: CGFloat = 0.6
     }
 }
 

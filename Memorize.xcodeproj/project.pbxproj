@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54DE9847293DFCF10061E0C0 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE9846293DFCF10061E0C0 /* AspectVGrid.swift */; };
 		54F0943128F91EE500DFE765 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F0943028F91EE500DFE765 /* MemorizeApp.swift */; };
 		54F0943328F91EE500DFE765 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F0943228F91EE500DFE765 /* EmojiMemoryGameView.swift */; };
 		54F0943528F91EE700DFE765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F0943428F91EE700DFE765 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54DE9846293DFCF10061E0C0 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		54F0942D28F91EE500DFE765 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F0943028F91EE500DFE765 /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
 		54F0943228F91EE500DFE765 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				54F0943028F91EE500DFE765 /* MemorizeApp.swift */,
 				54F0943228F91EE500DFE765 /* EmojiMemoryGameView.swift */,
+				54DE9846293DFCF10061E0C0 /* AspectVGrid.swift */,
 				54F0943E29008A6A00DFE765 /* MemoryGame.swift */,
 				54F09440290097DD00DFE765 /* EmojiMemoryGame.swift */,
 				54F0943428F91EE700DFE765 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				54F0943F29008A6B00DFE765 /* MemoryGame.swift in Sources */,
 				54F0943328F91EE500DFE765 /* EmojiMemoryGameView.swift in Sources */,
 				54F0943128F91EE500DFE765 /* MemorizeApp.swift in Sources */,
+				54DE9847293DFCF10061E0C0 /* AspectVGrid.swift in Sources */,
 				54F09441290097DD00DFE765 /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
