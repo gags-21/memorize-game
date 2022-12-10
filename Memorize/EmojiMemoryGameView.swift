@@ -45,6 +45,8 @@ struct CardView: View{
                 if card.isFaceUp {
                     shape.fill().foregroundColor(.white)
                     shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                    Pie(startAngle: Angle(degrees: 275), endAngle: Angle(degrees: 45))
+                        .padding(5).opacity(0.5)
                     Text(card.content).font( fontSize(in: geometry.size) )
                 } else if card.isMatched {
                     shape.opacity(0)
@@ -68,11 +70,12 @@ struct CardView: View{
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        EmojiMemoryGameView(game: game)
+        game.choose(game.cards.first!)
+        return EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.portrait)
-        EmojiMemoryGameView(game: game)
-            .preferredColorScheme(.light)
+        //        EmojiMemoryGameView(game: game)
+        //            .preferredColorScheme(.light)
         
     }
 }
