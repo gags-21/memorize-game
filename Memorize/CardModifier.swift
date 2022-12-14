@@ -7,20 +7,30 @@
 
 import SwiftUI
 
-struct CardModifier: ViewModifier {
-    var isFaceUp: Bool
+struct CardModifier: AnimatableModifier {
+    init(isFaceUp: Bool){
+        rotationAngle = isFaceUp ? 0 : 180
+    }
+    
+    var animatableData: Double {
+        get{rotationAngle}
+        set{rotationAngle = newValue}
+    }
+    
+    var rotationAngle: Double // degrees
     
     func body(content: Content) -> some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-            if isFaceUp {
+            if rotationAngle < 90 {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
             }  else {
                 shape.fill()
             }
-            content.opacity( isFaceUp ? 1 : 0)
+            content.opacity( rotationAngle<90 ? 1 : 0)
         }
+        .rotation3DEffect(Angle.degrees(rotationAngle), axis: (0,1,0))
     }
     
     private struct DrawingConstants {

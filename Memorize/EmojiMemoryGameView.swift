@@ -11,27 +11,34 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
-        //        ScrollView{
-        //            LazyVGrid (columns: [GridItem(.adaptive(minimum: 90))]){
-        //                ForEach(game.cards) {card in
+        VStack{ gameBody
+            shuffle}
+        .padding()
+    }
+    
+    var gameBody: some View {
         AspectVGrid(items: game.cards,
                     aspectRatio: 2/3,
                     content: {card in
             if card.isMatched && !card.isFaceUp {
-                Rectangle().opacity(0)
+                Color.clear
             } else {
                 CardView(card: card)
                     .padding(4)
                     .onTapGesture {
-                        game.choose(card)
+                        withAnimation{
+                            game.choose(card)
+                        }
                     }
             }
         })
-        //                }
-        //            }
-        //        }
-        .padding(.horizontal)
         .foregroundColor(.red)
+    }
+    
+    var shuffle: some View {
+        Button("Mix IT"){
+            withAnimation(Animation.easeInOut(duration: 1)){game.shuffle()}
+        }
     }
 }
 
