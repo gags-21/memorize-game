@@ -13,6 +13,7 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         VStack{
             gameBody
+            deckBody
             shuffle
         }
         .padding()
@@ -29,7 +30,7 @@ struct EmojiMemoryGameView: View {
     }
     
     var gameBody: some View {
-        AspectVGrid(items: game.cards, aspectRatio: 2/3 )
+        AspectVGrid(items: game.cards, aspectRatio: CardConstants.aspectRatio )
         {card in
             if isUndealt(card) || ( card.isMatched && !card.isFaceUp ) {
                 Color.clear
@@ -44,20 +45,40 @@ struct EmojiMemoryGameView: View {
                     }
             }
         }
-        .onAppear {
+        .foregroundColor(CardConstants.color)
+    }
+    
+    var deckBody: some View {
+        ZStack {
+            ForEach(game.cards.filter(isUndealt)) { card in
+                CardView(card: card)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .scale))
+            }
+        }
+        .frame(width: CardConstants.undealWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
+        .onTapGesture {
             withAnimation {
                 for card in game.cards{
                         dealt(card)
                 }
             }
         }
-        .foregroundColor(.red)
     }
     
     var shuffle: some View {
         Button("Mix IT"){
             withAnimation(Animation.easeInOut(duration: 1)){game.shuffle()}
         }
+    }
+    
+    private struct CardConstants {
+        static let color = Color.red
+        static let aspectRatio: CGFloat = 2/3
+        static let dealDuration: Double = 0.5
+        static let totalDealDuration: Double = 0.5
+        static let undealtHeight: CGFloat = 90
+        static let undealWidth = undealtHeight * aspectRatio
     }
 }
 
@@ -97,7 +118,6 @@ struct CardView: View{
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        game.choose(game.cards.first!)
         return EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.portrait)
