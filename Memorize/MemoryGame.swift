@@ -64,3 +64,30 @@ extension Array {
         }
     }
 }
+
+
+//
+//
+//// Mark: - Bonus Time
+//
+//var bonusTimeLimit: TimeInterval = 6
+//
+//private var faceUpTime: TimeInterval {
+//    if let lastFaceUpDate = self.lastFaceUpDate {
+//        return pastFaceUpTime + Date().timeIntervalSince(lastFaceUpDate)
+//    } else {
+//        return pastFaceUpTime
+//    }
+//}
+//
+//var latFaceUpDate: Date?
+//
+//var pastFaceUpTime: TimeInterval = 0
+//
+//var bonusTimeRemaining: TimeInterval {
+//    max(0, bonusTimeLimit - faceUpTime)
+//}
+//
+//var bonusRemaining: Double {
+//    (bonusTimeLimit > 0 && bonusTimeRemaining > 0) ? bonusTimeRemaining/bonusTimeLimit : 0
+//}
