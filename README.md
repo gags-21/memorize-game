@@ -2,4 +2,5 @@
 
 Preview
 
-![memorizeAppIos](https://user-images.githubusercontent.com/61724325/216373905-8b9d9268-91d7-4fc8-8f42-bd0800f77ca5.gif)
+![memorize app](https://user-images.githubusercontent.com/61724325/216392559-8987f2c1-70e1-491b-b60e-307d47217cde.gif)
+
